@@ -625,7 +625,7 @@ a {
 
 .checkpoint-card .topic-toggle::before {
   content: "Practice";
-  margin-right: auto;
+  margin-right: 0;
   padding: 0.2rem 0.45rem;
   border-radius: 999px;
   background: rgba(142, 167, 255, 0.12);
@@ -633,6 +633,43 @@ a {
   font-size: 0.66rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
+}
+
+.deep-dive-card {
+  border-color: rgba(255, 147, 106, 0.22);
+  background:
+    linear-gradient(135deg, rgba(255, 147, 106, 0.08), transparent 58%),
+    var(--surface);
+}
+
+.deep-dive-card .topic-toggle::before {
+  content: "Deep dive";
+  margin-right: 0;
+  padding: 0.2rem 0.45rem;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent-deep);
+  font-size: 0.66rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.checkpoint-card .topic-toggle,
+.deep-dive-card .topic-toggle {
+  justify-content: flex-start;
+}
+
+.checkpoint-card .topic-toggle::after,
+.deep-dive-card .topic-toggle::after {
+  margin-left: auto;
+}
+
+.model-text {
+  padding-left: 0.9rem;
+  border-left: 2px solid var(--accent);
+  color: #f6dfd5;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.04rem;
 }
 
 .topic-toggle {
