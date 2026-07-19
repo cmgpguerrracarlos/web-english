@@ -470,6 +470,12 @@ a {
   font-size: 0.84rem;
 }
 
+.meta-chip-time {
+  border-color: rgba(142, 167, 255, 0.3);
+  background: rgba(142, 167, 255, 0.08);
+  color: #c6d1ff;
+}
+
 .outcomes {
   padding: 1rem 1.1rem;
   margin-bottom: 1rem;
@@ -483,6 +489,29 @@ a {
 
 .topic-card {
   overflow: hidden;
+}
+
+.checkpoint-card {
+  border-color: rgba(142, 167, 255, 0.22);
+  background:
+    linear-gradient(135deg, rgba(142, 167, 255, 0.09), transparent 60%),
+    var(--surface);
+}
+
+.checkpoint-card .topic-toggle {
+  color: #dce3ff;
+}
+
+.checkpoint-card .topic-toggle::before {
+  content: "Practice";
+  margin-right: auto;
+  padding: 0.2rem 0.45rem;
+  border-radius: 999px;
+  background: rgba(142, 167, 255, 0.12);
+  color: #b9c7ff;
+  font-size: 0.66rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 .topic-toggle {
