@@ -3,6 +3,7 @@ const siteNav = document.querySelector(".site-nav");
 const navLinks = Array.from(document.querySelectorAll(".site-nav a"));
 const sections = Array.from(document.querySelectorAll("[data-section]"));
 const accordions = Array.from(document.querySelectorAll("[data-accordion]"));
+const assessment = document.querySelector("[data-assessment]");
 
 document.body.classList.add("js-enabled");
 
@@ -37,6 +38,37 @@ accordions.forEach((accordion, index) => {
     accordion.classList.toggle("is-collapsed", isExpanded);
   });
 });
+
+if (assessment) {
+  assessment.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    const result = assessment.querySelector("[data-assessment-result]");
+    const answers = new FormData(assessment);
+    const values = Array.from({ length: 6 }, (_, index) => answers.get(`q${index + 1}`));
+
+    if (values.some((value) => value === null)) {
+      result.innerHTML = "<p><strong>Complete all six questions</strong> so the recommendation reflects every skill.</p>";
+      result.classList.add("is-visible");
+      return;
+    }
+
+    const score = values.reduce((total, value) => total + Number(value), 0);
+    const isAdvancedRoute = score >= 4;
+    const routeName = isAdvancedRoute ? "B2 to C1" : "B1 to B2";
+    const target = isAdvancedRoute ? "reading" : "grammar";
+    const reason = isAdvancedRoute
+      ? "Your answers show solid control of explicit meaning. Focus next on nuance, register, and supported argument."
+      : "Your answers suggest that stronger control and reusable patterns will create the best foundation for advanced work.";
+
+    result.innerHTML = `
+      <p><strong>Recommended route: ${routeName}</strong></p>
+      <p>${reason}</p>
+      <a href="#${target}">Start with ${isAdvancedRoute ? "Reading" : "Grammar"}</a>
+    `;
+    result.classList.add("is-visible");
+  });
+}
 
 if ("IntersectionObserver" in window && sections.length > 0) {
   const observer = new IntersectionObserver(
