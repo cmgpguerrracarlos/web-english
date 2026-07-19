@@ -274,6 +274,34 @@ a {
   margin-bottom: 1rem;
 }
 
+.study-rhythm {
+  display: grid;
+  gap: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+.rhythm-card {
+  padding: 1rem 1.1rem;
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--line);
+}
+
+.rhythm-card p {
+  margin: 0.45rem 0 0;
+  color: var(--muted);
+}
+
+.rhythm-label {
+  display: inline-block;
+  margin-bottom: 0.45rem;
+  color: var(--accent-deep);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
 .module-grid {
   display: grid;
   gap: 0.9rem;
@@ -299,6 +327,12 @@ a {
   font-size: 1.1rem;
 }
 
+.module-link small {
+  color: var(--accent-deep);
+  font-size: 0.82rem;
+  letter-spacing: 0.04em;
+}
+
 .module-link span {
   color: var(--muted);
 }
@@ -311,6 +345,25 @@ a {
 .section-heading {
   max-width: 42rem;
   margin-bottom: 1rem;
+}
+
+.section-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin-bottom: 1rem;
+}
+
+.meta-chip {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2rem;
+  padding: 0.35rem 0.7rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 0.84rem;
 }
 
 .outcomes {
@@ -418,6 +471,10 @@ button:focus-visible {
 
   .module-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .study-rhythm {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 
