@@ -385,6 +385,127 @@ a {
   text-transform: uppercase;
 }
 
+.route-picker {
+  margin: 2rem 0;
+  padding: 1.4rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: rgba(8, 14, 22, 0.58);
+}
+
+.route-heading {
+  display: grid;
+  gap: 0.55rem;
+  margin-bottom: 1.2rem;
+}
+
+.route-heading h2 {
+  margin: 0.35rem 0 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.65rem, 5vw, 2.35rem);
+  line-height: 1.1;
+}
+
+.route-heading > p {
+  max-width: 31rem;
+  margin: 0;
+  color: var(--muted);
+}
+
+.route-grid {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.route-card {
+  position: relative;
+  overflow: hidden;
+  padding: 1.2rem;
+  border: 1px solid var(--line);
+  border-radius: 1rem;
+  background: var(--surface);
+}
+
+.route-card::after {
+  content: "";
+  position: absolute;
+  width: 7rem;
+  height: 7rem;
+  right: -3.5rem;
+  top: -3.5rem;
+  border-radius: 50%;
+  background: var(--route-color);
+  opacity: 0.13;
+}
+
+.route-foundation {
+  --route-color: var(--accent);
+}
+
+.route-advanced {
+  --route-color: var(--blue);
+}
+
+.route-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.route-level {
+  color: var(--route-color);
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+.route-duration {
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+
+.route-card h3 {
+  margin: 0.85rem 0 0.35rem;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.35rem;
+}
+
+.route-card > p {
+  color: var(--muted);
+}
+
+.route-steps {
+  margin: 1rem 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--line);
+}
+
+.route-steps a {
+  display: grid;
+  grid-template-columns: 1.8rem 1fr;
+  gap: 0.65rem;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--line);
+  text-decoration: none;
+}
+
+.route-steps a:hover,
+.route-steps a:focus-visible {
+  color: var(--route-color);
+}
+
+.route-steps span {
+  color: var(--route-color);
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.route-result {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
 .module-grid {
   display: grid;
   gap: 0.9rem;
@@ -608,6 +729,15 @@ button:focus-visible {
 
   .study-rhythm {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .route-heading {
+    grid-template-columns: minmax(0, 1.1fr) minmax(16rem, 0.75fr);
+    align-items: end;
+  }
+
+  .route-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
