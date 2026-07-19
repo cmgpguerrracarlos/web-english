@@ -4,6 +4,11 @@ const navLinks = Array.from(document.querySelectorAll(".site-nav a"));
 const sections = Array.from(document.querySelectorAll("[data-section]"));
 const accordions = Array.from(document.querySelectorAll("[data-accordion]"));
 const assessment = document.querySelector("[data-assessment]");
+const completionButtons = Array.from(document.querySelectorAll("[data-module-complete]"));
+const progressCount = document.querySelector("[data-progress-count]");
+const progressTrack = document.querySelector("[data-progress-track]");
+const progressBar = document.querySelector("[data-progress-bar]");
+const progressStorageKey = "english-studio-completed-modules";
 
 document.body.classList.add("js-enabled");
 
@@ -69,6 +74,64 @@ if (assessment) {
     result.classList.add("is-visible");
   });
 }
+
+const readCompletedModules = () => {
+  try {
+    const savedModules = JSON.parse(localStorage.getItem(progressStorageKey) || "[]");
+    return new Set(Array.isArray(savedModules) ? savedModules : []);
+  } catch {
+    return new Set();
+  }
+};
+
+const completedModules = readCompletedModules();
+
+const renderProgress = () => {
+  const validModules = completionButtons.map((button) => button.dataset.moduleComplete);
+  const completedCount = validModules.filter((module) => completedModules.has(module)).length;
+
+  completionButtons.forEach((button) => {
+    const module = button.dataset.moduleComplete;
+    const isComplete = completedModules.has(module);
+    const moduleName = module.charAt(0).toUpperCase() + module.slice(1);
+    button.setAttribute("aria-pressed", String(isComplete));
+    button.textContent = isComplete ? `${moduleName} completed - undo` : `Mark ${moduleName} complete`;
+
+    const moduleLink = document.querySelector(`.module-link[href="#${module}"]`);
+    moduleLink?.classList.toggle("is-complete", isComplete);
+  });
+
+  if (progressCount) {
+    progressCount.textContent = String(completedCount);
+  }
+
+  if (progressTrack && progressBar) {
+    progressTrack.setAttribute("aria-valuenow", String(completedCount));
+    progressBar.style.width = `${(completedCount / validModules.length) * 100}%`;
+  }
+};
+
+completionButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    const module = button.dataset.moduleComplete;
+
+    if (completedModules.has(module)) {
+      completedModules.delete(module);
+    } else {
+      completedModules.add(module);
+    }
+
+    try {
+      localStorage.setItem(progressStorageKey, JSON.stringify(Array.from(completedModules)));
+    } catch {
+      // Progress still works for the current page when browser storage is unavailable.
+    }
+
+    renderProgress();
+  });
+});
+
+renderProgress();
 
 if ("IntersectionObserver" in window && sections.length > 0) {
   const observer = new IntersectionObserver(

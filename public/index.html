@@ -157,6 +157,26 @@
             <div class="assessment-result" data-assessment-result aria-live="polite"></div>
           </form>
         </details>
+        <section class="progress-panel" aria-labelledby="progress-title">
+          <div class="progress-copy">
+            <div>
+              <p class="eyebrow">Your progress</p>
+              <h3 id="progress-title"><span data-progress-count>0</span> of 6 modules complete</h3>
+            </div>
+            <p>Saved only in this browser.</p>
+          </div>
+          <div
+            class="progress-track"
+            role="progressbar"
+            aria-label="Completed study modules"
+            aria-valuemin="0"
+            aria-valuemax="6"
+            aria-valuenow="0"
+            data-progress-track
+          >
+            <span data-progress-bar></span>
+          </div>
+        </section>
         <div class="route-grid">
           <article class="route-card route-foundation">
             <div class="route-card-top">
@@ -248,6 +268,9 @@
         <strong>Target outcomes:</strong> choose accurate structures faster, avoid
         fossilized errors, and write with more variety.
       </div>
+      <button class="module-complete" type="button" data-module-complete="grammar" aria-pressed="false">
+        Mark Grammar complete
+      </button>
       <div class="topic-list">
         <article class="topic-card" data-accordion>
           <button class="topic-toggle" type="button" aria-expanded="true">
@@ -336,6 +359,9 @@
         <strong>Target outcomes:</strong> sound more precise, reduce translation habits,
         and expand your expressive range.
       </div>
+      <button class="module-complete" type="button" data-module-complete="vocabulary" aria-pressed="false">
+        Mark Vocabulary complete
+      </button>
       <div class="topic-list">
         <article class="topic-card" data-accordion>
           <button class="topic-toggle" type="button" aria-expanded="true">
@@ -413,6 +439,9 @@
         <strong>Target outcomes:</strong> improve speed, understand structure, and make
         stronger inferences from context.
       </div>
+      <button class="module-complete" type="button" data-module-complete="reading" aria-pressed="false">
+        Mark Reading complete
+      </button>
       <div class="topic-list">
         <article class="topic-card" data-accordion>
           <button class="topic-toggle" type="button" aria-expanded="true">
@@ -490,6 +519,9 @@
         <strong>Target outcomes:</strong> write more cohesive paragraphs, match tone to
         purpose, and produce cleaner formal texts.
       </div>
+      <button class="module-complete" type="button" data-module-complete="writing" aria-pressed="false">
+        Mark Writing complete
+      </button>
       <div class="topic-list">
         <article class="topic-card" data-accordion>
           <button class="topic-toggle" type="button" aria-expanded="true">
@@ -566,6 +598,9 @@
         <strong>Target outcomes:</strong> catch the main message faster, identify key
         details, and recognize paraphrased answers.
       </div>
+      <button class="module-complete" type="button" data-module-complete="listening" aria-pressed="false">
+        Mark Listening complete
+      </button>
       <div class="topic-list">
         <article class="topic-card" data-accordion>
           <button class="topic-toggle" type="button" aria-expanded="true">
@@ -643,6 +678,9 @@
         <strong>Target outcomes:</strong> sound more fluent, compare ideas more clearly,
         and justify opinions with confidence.
       </div>
+      <button class="module-complete" type="button" data-module-complete="speaking" aria-pressed="false">
+        Mark Speaking complete
+      </button>
       <div class="topic-list">
         <article class="topic-card" data-accordion>
           <button class="topic-toggle" type="button" aria-expanded="true">
