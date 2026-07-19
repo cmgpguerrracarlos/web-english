@@ -11,6 +11,7 @@
   --accent: #ff936a;
   --accent-deep: #ffb08f;
   --accent-soft: rgba(255, 147, 106, 0.16);
+  --blue: #8ea7ff;
   --shadow: 0 18px 45px rgba(1, 6, 16, 0.42);
   --radius: 1.2rem;
   --max: 72rem;
@@ -183,7 +184,22 @@ a {
 }
 
 .hero-copy {
+  position: relative;
+  overflow: hidden;
   padding: 1.75rem;
+}
+
+.hero-copy::after {
+  content: "";
+  position: absolute;
+  width: 11rem;
+  height: 11rem;
+  right: -5rem;
+  top: -5rem;
+  border: 1px solid rgba(255, 147, 106, 0.2);
+  border-radius: 50%;
+  box-shadow: 0 0 0 2.5rem rgba(255, 147, 106, 0.035);
+  pointer-events: none;
 }
 
 .hero-copy h1 {
@@ -207,6 +223,41 @@ a {
   max-width: 36rem;
   font-size: 1.06rem;
   color: var(--muted);
+}
+
+.level-path {
+  display: grid;
+  grid-template-columns: auto 1fr auto 1fr auto;
+  align-items: center;
+  gap: 0.55rem;
+  max-width: 29rem;
+  margin-top: 1.6rem;
+}
+
+.level-stop {
+  display: grid;
+  gap: 0.05rem;
+  color: var(--ink);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.05rem;
+}
+
+.level-stop small {
+  color: var(--muted);
+  font-family: "Segoe UI", "Trebuchet MS", sans-serif;
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.level-stop.is-current {
+  color: var(--accent-deep);
+}
+
+.level-line {
+  height: 1px;
+  background: linear-gradient(90deg, var(--accent), var(--blue));
+  opacity: 0.65;
 }
 
 .hero-actions {
@@ -244,7 +295,19 @@ a {
 }
 
 .hero-panel {
+  position: relative;
   padding: 1.5rem;
+  background:
+    linear-gradient(145deg, rgba(29, 42, 61, 0.96), rgba(15, 23, 34, 0.96));
+}
+
+.panel-kicker {
+  margin: 0 0 0.35rem;
+  color: var(--blue);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
 }
 
 .hero-panel h2,
@@ -257,7 +320,27 @@ a {
 
 .roadmap-list {
   margin: 0;
-  padding-left: 1.2rem;
+  padding: 0;
+  list-style: none;
+}
+
+.roadmap-list li {
+  display: grid;
+  grid-template-columns: 2rem 1fr;
+  gap: 0.75rem;
+  padding: 0.85rem 0;
+  border-top: 1px solid var(--line);
+}
+
+.roadmap-list li > span {
+  color: var(--accent-deep);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.roadmap-list p {
+  margin: 0;
 }
 
 .panel-note {
@@ -308,12 +391,19 @@ a {
 }
 
 .module-link {
+  position: relative;
   display: grid;
   gap: 0.35rem;
   padding: 1.2rem;
   text-decoration: none;
   border-radius: 1rem;
   transition: transform 160ms ease, border-color 160ms ease, background-color 160ms ease;
+}
+
+.module-number {
+  color: var(--muted);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
 }
 
 .module-link:hover,
@@ -324,7 +414,21 @@ a {
 }
 
 .module-link strong {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
   font-size: 1.1rem;
+}
+
+.module-link strong span {
+  color: var(--accent-deep);
+  font-weight: 400;
+  transition: transform 160ms ease;
+}
+
+.module-link:hover strong span,
+.module-link:focus-visible strong span {
+  transform: translate(0.15rem, -0.15rem);
 }
 
 .module-link small {
