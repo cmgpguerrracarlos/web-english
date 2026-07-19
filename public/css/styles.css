@@ -1,15 +1,17 @@
 :root {
-  --bg: #f6efe5;
-  --bg-soft: #fffaf4;
-  --surface: rgba(255, 250, 244, 0.88);
-  --surface-strong: #fffdf8;
-  --ink: #1f1a17;
-  --muted: #655a52;
-  --line: rgba(31, 26, 23, 0.12);
-  --accent: #b85c38;
-  --accent-deep: #8d3f24;
-  --accent-soft: #f2d5c4;
-  --shadow: 0 18px 45px rgba(78, 52, 38, 0.14);
+  color-scheme: dark;
+  --bg: #0d1117;
+  --bg-soft: #111823;
+  --surface: rgba(18, 26, 38, 0.9);
+  --surface-strong: #182233;
+  --surface-elevated: #1d2a3d;
+  --ink: #eef2f7;
+  --muted: #b5c0cf;
+  --line: rgba(201, 214, 229, 0.16);
+  --accent: #ff936a;
+  --accent-deep: #ffb08f;
+  --accent-soft: rgba(255, 147, 106, 0.16);
+  --shadow: 0 18px 45px rgba(1, 6, 16, 0.42);
   --radius: 1.2rem;
   --max: 72rem;
 }
@@ -27,14 +29,15 @@ body {
   font-family: "Segoe UI", "Trebuchet MS", sans-serif;
   color: var(--ink);
   background:
-    radial-gradient(circle at top left, rgba(184, 92, 56, 0.16), transparent 30%),
-    linear-gradient(180deg, #fbf4ea 0%, #f6efe5 38%, #efe4d5 100%);
+    radial-gradient(circle at top left, rgba(255, 147, 106, 0.18), transparent 30%),
+    radial-gradient(circle at bottom right, rgba(86, 122, 255, 0.16), transparent 28%),
+    linear-gradient(180deg, #0d1117 0%, #101722 38%, #0a0f16 100%);
   line-height: 1.6;
 }
 
 img {
-  max-width: 100%;
   display: block;
+  max-width: 100%;
 }
 
 a {
@@ -45,8 +48,9 @@ a {
   position: absolute;
   left: 1rem;
   top: -3rem;
-  background: var(--ink);
-  color: #fff;
+  background: var(--surface-elevated);
+  color: var(--ink);
+  border: 1px solid var(--line);
   padding: 0.75rem 1rem;
   z-index: 20;
 }
@@ -65,7 +69,7 @@ a {
   top: 0;
   z-index: 10;
   backdrop-filter: blur(16px);
-  background: rgba(246, 239, 229, 0.75);
+  background: rgba(13, 17, 23, 0.78);
   border-bottom: 1px solid var(--line);
 }
 
@@ -90,8 +94,8 @@ a {
   width: 3.1rem;
   height: 3.1rem;
   border-radius: 50%;
-  background: var(--ink);
-  color: var(--bg-soft);
+  background: linear-gradient(135deg, var(--accent), #ffbf8a);
+  color: #201612;
   font-family: Georgia, "Times New Roman", serif;
   font-size: 0.95rem;
   letter-spacing: 0.08em;
@@ -111,7 +115,7 @@ a {
 
 .nav-toggle {
   border: 1px solid var(--line);
-  background: var(--surface-strong);
+  background: var(--surface-elevated);
   border-radius: 999px;
   padding: 0.7rem 1rem;
   color: var(--ink);
@@ -128,7 +132,7 @@ a {
   padding: 0.75rem;
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  background: rgba(255, 250, 244, 0.96);
+  background: rgba(17, 24, 35, 0.98);
   box-shadow: var(--shadow);
 }
 
@@ -166,7 +170,7 @@ a {
 .topic-card,
 .outcomes {
   background: var(--surface);
-  border: 1px solid rgba(255, 255, 255, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.06);
   box-shadow: var(--shadow);
 }
 
@@ -220,7 +224,7 @@ a {
   padding: 0.85rem 1.2rem;
   border-radius: 999px;
   text-decoration: none;
-  transition: transform 160ms ease, background-color 160ms ease;
+  transition: transform 160ms ease, background-color 160ms ease, border-color 160ms ease;
 }
 
 .button:hover,
@@ -229,12 +233,12 @@ a {
 }
 
 .button-primary {
-  background: var(--accent);
-  color: #fff9f5;
+  background: linear-gradient(135deg, var(--accent), #ffb86f);
+  color: #201612;
 }
 
 .button-secondary {
-  background: transparent;
+  background: rgba(255, 255, 255, 0.02);
   color: var(--ink);
   border: 1px solid var(--line);
 }
@@ -262,7 +266,7 @@ a {
 }
 
 .intro {
-  padding: 1rem 0 1rem;
+  padding: 1rem 0;
 }
 
 .intro-card {
@@ -281,6 +285,14 @@ a {
   padding: 1.2rem;
   text-decoration: none;
   border-radius: 1rem;
+  transition: transform 160ms ease, border-color 160ms ease, background-color 160ms ease;
+}
+
+.module-link:hover,
+.module-link:focus-visible {
+  transform: translateY(-2px);
+  border-color: rgba(255, 147, 106, 0.28);
+  background: var(--surface-elevated);
 }
 
 .module-link strong {
@@ -328,6 +340,12 @@ a {
   color: var(--ink);
   text-align: left;
   font-weight: 700;
+  transition: background-color 160ms ease;
+}
+
+.topic-toggle:hover,
+.topic-toggle:focus-visible {
+  background: rgba(255, 255, 255, 0.02);
 }
 
 .topic-toggle::after {
@@ -337,7 +355,7 @@ a {
 }
 
 .topic-toggle[aria-expanded="true"]::after {
-  content: "−";
+  content: "-";
 }
 
 .topic-body {
@@ -364,6 +382,12 @@ a {
   padding-top: 1.2rem;
   border-top: 1px solid var(--line);
   color: var(--muted);
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
 }
 
 @media (min-width: 48rem) {
